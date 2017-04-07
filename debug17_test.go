@@ -1,4 +1,4 @@
-// +build !go1.7
+// +build go1.7
 
 package jsonrpc
 
@@ -15,7 +15,6 @@ func TestDebugHandler(t *testing.T) {
 
 	PurgeMethods()
 
-	c := context.Background()
 	rec := httptest.NewRecorder()
 	r, err := http.NewRequest("", "", nil)
 	require.NoError(t, err)
