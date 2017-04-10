@@ -21,7 +21,7 @@ func TestDebugHandler(t *testing.T) {
 	r, err := http.NewRequest("", "", nil)
 	require.NoError(t, err)
 
-	DebugHandlerFunc(rec, r)
+	DebugHandlerFunc(c, rec, r)
 
 	require.Equal(t, http.StatusNotFound, rec.Code)
 
