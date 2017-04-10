@@ -3,6 +3,7 @@
 package jsonrpc
 
 import (
+	"context"
 	"net/http"
 	"net/http/httptest"
 	"testing"
