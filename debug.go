@@ -1,4 +1,4 @@
-// +build go1.7
+// +build !go1.7
 package jsonrpc
 
 import (
@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"reflect"
 
+	"golang.org/x/net/context"
 	"github.com/alecthomas/jsonschema"
 )
 
@@ -18,7 +19,7 @@ type MethodReference struct {
 }
 
 // DebugHandlerFunc views registered method list.
-func DebugHandlerFunc(w http.ResponseWriter, r *http.Request) {
+func DebugHandlerFunc(c context.Context,w http.ResponseWriter, w http.ResponseWriter, r *http.Request) {
 	ms := Methods()
 	if len(ms) == 0 {
 		w.WriteHeader(http.StatusNotFound)
