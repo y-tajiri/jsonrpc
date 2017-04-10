@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"golang.org/x/net/context"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/net/context"
 )
 
 func TestDebugHandler(t *testing.T) {
@@ -35,8 +35,16 @@ func TestDebugHandler(t *testing.T) {
 	r, err = http.NewRequest("", "", nil)
 	require.NoError(t, err)
 
-	DebugHandlerFunc(rec, r)
+	DebugHandlerFunc(c, rec, r)
 
 	require.Equal(t, http.StatusOK, rec.Code)
 	assert.NotEmpty(t, rec.Body.String())
+}
+
+func SampleHandler() Handler {
+	h := handler{}
+	h.F = func(c context.Context, params *json.RawMessage) (result interface{}, err *Error) {
+		return nil, nil
+	}
+	return h
 }
