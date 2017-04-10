@@ -19,7 +19,7 @@ type MethodReference struct {
 }
 
 // DebugHandlerFunc views registered method list.
-func DebugHandlerFunc(c context.Context,w http.ResponseWriter, w http.ResponseWriter, r *http.Request) {
+func DebugHandlerFunc(c context.Context, w http.ResponseWriter, r *http.Request) {
 	ms := Methods()
 	if len(ms) == 0 {
 		w.WriteHeader(http.StatusNotFound)
