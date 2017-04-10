@@ -1,4 +1,5 @@
 // +build go1.7
+
 package jsonrpc
 
 import (
